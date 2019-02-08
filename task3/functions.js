@@ -76,18 +76,35 @@ let isPalindrome = str => {
 // console.log(isPalindrome('abcd'));
 // console.log(isPalindrome('a man a plan a canal panama'));
 
+function sortArray(inputAr) {
+    var temp;
+    for (var i = 0; i < inputAr.length; i++) {
+      for (var j = i + 1; j < inputAr.length; j++) {
+        if (inputAr[j] < inputAr[i]) {
+          temp = inputAr[j];
+          inputAr[j] = inputAr[i];
+          inputAr[i] = temp;
+        }
+      }
+    }
+    return inputAr;
+  }
+
 let missing = (arr) => {
-    let total = (arr.length + 1) * (arr.length + 2) / 2;
-    for (let i = 0; i < arr.length; i++) total -= arr[i];
-    if(total>arr.length-1) return undefined;
-    return total;
+    let total = [];
+    let A = sortArray(arr);
+    for(let i=1; i<Math.max(...arr); i++){
+        if ( arr.indexOf(i) === -1) {total.push(i)};
+    }
+     return total;
+
 }
 
 // console.log(missing([]));
 // console.log(missing([1,4,3]));
 // console.log(missing([2,3,4]));
 // console.log(missing([5,1,4,2]));
-// console.log(missing([1,2,3,4]));
+//  console.log(missing([6,1,4,2]));
 
 let isBalansed = (str) => {
     if (isBalancedBreckets(str)) return true
