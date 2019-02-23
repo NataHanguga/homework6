@@ -1,5 +1,5 @@
 let isPrime = n => {
-    if (n <= 3) return false;
+    if (n <= 3) return true;
     else if ((n % 2 === 0) || (n % 3 === 0)) return false;
 
     let i = 5;
